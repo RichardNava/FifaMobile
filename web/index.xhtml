@@ -11,7 +11,8 @@
         <f:view>
             <!-- Etiqueta para mostrar un mensaje <h:outputText />
                  1- En el parametro 'value' especificamos que queremos usar el atributo 'mensaje' de nuestro Bean UserManager 
-                 2- El parametro 'rendered' utiliza un condicional para mostrar el mensaje o no. En este caso el condicional es que el atributo 'mensaje' no este vacio
+                 2- El parametro 'rendered' utiliza un condicional para mostrar el mensaje o no. En este caso el condicional 
+                es que el atributo 'mensaje' no este vacio
             -->
             <h:outputText value="#{um.mensaje}" style="color: green" rendered="#{!um.mensaje.isEmpty()}"/>
             <br/>  
