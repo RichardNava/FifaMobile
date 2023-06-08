@@ -9,8 +9,15 @@
     <h:body>
         <h:form>
             <h2>Equipo Actual</h2>
-            <ul>
+            <ul>                   
+                <!-- Esta etiqueta repite una acción y funciona de forma similar a la de dataTable (ver show.xhtml) 
+                    pero permite declarar distintas acciones para cada elemento del iterable
+                -->
                 <ui:repeat value="#{fm.futbolistasSeleccionados}" var="futbolista">
+                    <!-- mostramos en formato lista el nombre y el apellido
+                        si por ejemplo quisiesemos mostrar la nacionalidad unicamente tendriamos que añadir
+                        #*{futbolista.nacionalidad} quitando el asterisco después de la almohadilla 
+                    -->
                     <li>#{futbolista.nombre} #{futbolista.apellidos}</li>
                 </ui:repeat>
             </ul>

@@ -14,6 +14,8 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String username, email, password;
+    // Esto lo puse a última hora, es provisional. Aquí debieramos especificar
+    // un objeto de la clase 'Equipo' que tendra, como mínimo dos atributos (String nombre, Set<Futbolista> plantilla)
     private transient Set<Futbolista> equipo = new HashSet<>();
 
     public User() {

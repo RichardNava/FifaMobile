@@ -9,16 +9,35 @@
     </h:head>
     <h:body>
         <f:view>
+            <!-- Etiqueta para mostrar un mensaje <h:outputText />
+                 1- En el parametro 'value' especificamos que queremos usar el atributo 'mensaje' de nuestro Bean UserManager 
+                 2- El parametro 'rendered' utiliza un condicional para mostrar el mensaje o no. En este caso el condicional es que el atributo 'mensaje' no este vacio
+            -->
             <h:outputText value="#{um.mensaje}" style="color: green" rendered="#{!um.mensaje.isEmpty()}"/>
             <br/>  
-            <h:form>
+            <h:form> <!-- Etiqueta para iniciar un formulario-->
                 <h:outputLabel value="Ingrese el email del usuario: " style="font-size: 30px"/>
+                <!-- Etiqueta para recibir una entrada de texto <h: inputText /> 
+                    1- En el 'parametro' value indicamos que atributo de nuestro Bean almacenará el valos que nos pasen
+                    esta acción usa el método setEmail()
+                -->
                 <h:inputText value="#{um.email}"/>
                 <br/>  
                 <h:outputLabel value="Ingrese el password del usuario: " style="font-size: 30px"/>
+                <!-- Etiqueta para recibir una entrada de texto oculto <h: inputText /> especifico para contraseñas o datos sensibles 
+                    1- En el 'parametro' value indicamos que atributo de nuestro Bean almacenará el valos que nos pasen
+                    esta acción usa el método setPassword()
+                -->
                 <h:inputSecret value="#{um.password}"/>
-                <br/>                  
+                <br/> 
+                <!-- Etiqueta para usar un botón <h: commandButton /> 
+                     1- El parametro 'value' nos permite escribir el texto que se mostrará en el botón
+                     2- En 'action' se espera recibir un String con la regla de navegación (alias de nuestro destino)
+                     en este caso usamos un método que nos devolverá "show" (navegar a show.xhtml) o "" (refrescar página)
+                     en función de un algoritmo que procesa la información facilitada en el formulario
+                -->
                 <h:commandButton value="Acceder" action="#{um.entrar()}"/>  
+                <!-- En este caso el parametro 'action' nos llevará siempre a 'log.xhtml' porque le pasamos el alias -->
                 <h:commandButton value="Crear Usuario" action="log"/>  
             </h:form>
         </f:view>

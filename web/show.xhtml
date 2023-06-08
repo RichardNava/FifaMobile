@@ -14,32 +14,58 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 
     <h:body>
         <h:form>
+            <!-- Etiqueta para mostrar una tabla <h: dataTable /> 
+                1- El parametro 'value' nos permite pasar el iterable (Colección) que queremos recorrer
+                para rellenar las filas. En este caso usamos el método 'getFutbolistasActuales()' que nos devuelve 
+                la lista 'futbolistasActuales' con los futbolistas que corresponden por posición
+                2- El atributo 'var' nos permite asignar un nombre que recibiran cada uno de los elementos de nuestro conjunto de datos iterable
+                Resumen: Para que lo visualiceis esto es como un bucle forEach, siendo:
+                    bucle forEach        -> for(Futbolista futbolista : getFutbolistasActuales()) 
+                            equivale a
+                    parametros dataTable ->      var="futbolista"       value="#,{fm.futbolistasActuales}"
+            -->
             <h:dataTable value="#{fm.futbolistasActuales}" var="futbolista">
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Seleccionar"/>
                     </f:facet>
+                    <!-- Etiqueta para mostrar <h: selectBooleanCheckBox /> 
+                        1- Muesta un checkBox que asigna su valor booleano al parametro 'value'
+                    -->
                     <h:selectBooleanCheckbox value="#{futbolista.seleccionado}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Nombre"/>
                     </f:facet>
+                    <!-- Mostramos la información del nombre -->
                     <h:outputText value="#{futbolista.nombre}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Apellido"/>
                     </f:facet>
+                    <!-- Mostramos la información del apellido -->
                     <h:outputText value="#{futbolista.apellidos}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Nacionalidad"/>
                     </f:facet>
+                    <!-- Mostramos la información de la nacionalidad -->
                     <h:outputText value="#{futbolista.nacionalidad}"/>
                 </h:column>
+                <!-- Repitiendo lo comprendido en la etiqueta column y cambiando el 'value'
+                    para mostrar otro atributo de nuestro Bean, podemos mostrar toda la información 
+                    que tengamos/queramos
+                -->
             </h:dataTable>
+            <!-- En este caso el botón usa el método siguientePosición() de nuestro Bean FutbolManager
+                esto avanzará una posición del enum y actualizará la lista futbolistasActuales a la que corresponde,
+                finalmente refrescaremos la página para mostrar la nueva información.
+                De esta forma hemos conseguido que nuestra página se comporte de forma dinámica y que su contenido cambié
+                en función del momento.
+            -->
             <h:commandButton value="Continuar" action="#{fm.siguientePosicion()}"/>
         </h:form>
     </h:body>

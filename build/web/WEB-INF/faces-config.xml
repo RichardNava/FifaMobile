@@ -23,29 +23,32 @@
               xmlns="https://jakarta.ee/xml/ns/jakartaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_3_0.xsd">
-    <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>show</from-outcome>
-            <to-view-id>/show.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>log</from-outcome>
-            <to-view-id>/log.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/*</from-view-id>
-        <navigation-case>
-            <from-outcome>index</from-outcome>
-            <to-view-id>/index.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/show</from-view-id>
-        <navigation-case>
-            <from-outcome>resumen</from-outcome>
-            <to-view-id>/resumen.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
+
+    <navigation-rule>     <!-- Regla de navegación 1 -->
+        <from-view-id>/index.xhtml</from-view-id> <!-- Origen (desde donde estamos navegando) -->
+        <navigation-case> <!-- Establecemos el caso asociado al origen anterior -->
+            <from-outcome>show</from-outcome> <!-- Alias (lo usaremos en nuestros métodos Java en los Bean para navegar) -->
+            <to-view-id>/show.xhtml</to-view-id> <!-- Destino (a donde vamos) -->
+        </navigation-case> <!-- Fin del caso -->
+        <navigation-case> <!-- Establecemos el caso asociado al origen anterior -->
+            <from-outcome>log</from-outcome> <!-- Alias (lo usaremos en nuestros métodos Java en los Bean para navegar) -->
+            <to-view-id>/log.xhtml</to-view-id> <!-- Destino -->
+        </navigation-case> <!-- Fin del caso -->
+    </navigation-rule> <!-- Fin de la regla de navegación 1 -->
+
+    <navigation-rule>     <!-- Regla de navegación 2 -->
+        <from-view-id>/*</from-view-id> <!-- Origen (El * indica desde cualquier lugar) -->
+        <navigation-case> <!-- Establecemos el caso asociado al origen anterior -->
+            <from-outcome>index</from-outcome> <!-- Alias (lo usaremos en nuestros métodos Java en los Bean para navegar) -->
+            <to-view-id>/index.xhtml</to-view-id> <!-- Destino -->
+        </navigation-case> <!-- Fin del caso -->
+    </navigation-rule> <!-- Fin de la regla de navegación 2 -->
+
+    <navigation-rule>     <!-- Regla de navegación 3 -->
+        <from-view-id>/show</from-view-id> <!-- Origen -->
+        <navigation-case> <!-- Establecemos el caso asociado al origen anterior -->
+            <from-outcome>resumen</from-outcome> <!-- Alias (lo usaremos en nuestros métodos Java en los Bean para navegar) -->
+            <to-view-id>/resumen.xhtml</to-view-id> <!-- Destino -->
+        </navigation-case> <!-- Fin del caso -->
+    </navigation-rule> <!-- Fin de la regla de navegación 1 -->
 </faces-config>
